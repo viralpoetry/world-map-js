@@ -1,2 +1,3 @@
-# worldMapJs
-Draw simple world map using canvas.
+# world-map-js  
+
+Draw a simple world map using canvas.

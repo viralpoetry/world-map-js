@@ -1,26 +1,28 @@
-function drawMap() {
-  gridSize = 6
-  ctx = canvas.getContext('2d');
+const rectSize = 8
+const space = 0
 
+const colors = {
+  0: '#EFC958',
+  1: '#344E5C',
+  2: '#FFFFFF',
+  3: '#4AB19D',
+  4: '#EF3D59',
+  5: '#123456',
+  6: '#E17A47'
+}
+
+function drawMap () {
+  let ctx = canvas.getContext('2d')
   for (var y = 0; y < worldMap.length; y++) {
-    var tmpMap = worldMap[y].toString();
+    var tmpMap = worldMap[y].toString()
     for (var x = 0; x < tmpMap.length; x++) {
-      if (tmpMap.charAt(x) != 2) { // water
-        //ctx.fillStyle = "rgb(50,50,128)";
-        ctx.fillStyle = `rgb(
-        ${Math.floor(100 + 10 * tmpMap.charAt(x))},
-        ${Math.floor(50 + 10 *  tmpMap.charAt(x))},
-        ${Math.floor(140 + 10 *  tmpMap.charAt(x))})`;
-        ctx.fillRect(x * (gridSize + 2), y * (gridSize + 2), gridSize, gridSize);
-      } else {
-        ctx.fillStyle = "rgb(2,2,2)";
-        ctx.fillRect(x * (gridSize + 2), y * (gridSize + 2), gridSize, gridSize);
-      }
+      ctx.fillStyle = colors[tmpMap.charAt(x)]
+      ctx.fillRect(x * (rectSize + space), y * (rectSize + space), rectSize, rectSize)
     }
   }
 }
 
-window.onload = function() {
-  var canvas = document.getElementById('canvas');
-  drawMap();
-};
+window.onload = function () {
+  var canvas = document.getElementById('canvas')
+  drawMap()
+}
